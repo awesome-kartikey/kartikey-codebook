@@ -16,7 +16,7 @@ COPY package.json package-lock.json* ./
 
 # Install dependencies using npm ci (clean install)
 # This is where react-scripts should get installed into node_modules/.bin
-RUN npm ci
+RUN npm install 
 
 # Copy the rest of the application source code AFTER installing dependencies
 COPY . .
