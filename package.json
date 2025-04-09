@@ -17,7 +17,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "json-server-auth --watch data/db.json --routes data/routes.json --port $PORT --static ./build",
+    "start": "json-server-auth --watch data/db.json --routes data/routes.json --host 0.0.0.0 --port $PORT --static ./build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
