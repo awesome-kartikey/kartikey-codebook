@@ -16,13 +16,13 @@ COPY package.json package-lock.json* ./
 
 # Install dependencies using npm install (used instead of ci due to prior issues)
 # This is where react-scripts should get installed into node_modules/.bin
-RUN npm install # OK - Using install as a fallback to ci
+RUN npm install 
 
 # Copy the rest of the application source code AFTER installing dependencies
 COPY . .
 
 # Build the React app - react-scripts should now be found
-RUN npm run build # CORRECT: Builds the static frontend
+RUN npm run build 
 
 # Stage 2: Setup the production environment
 FROM node:18-alpine AS production-stage
@@ -38,16 +38,16 @@ COPY package.json package-lock.json* ./
 
 # Install *only* production dependencies
 # Note: json-server and json-server-auth MUST be in "dependencies" in package.json
-RUN npm install --only=production # CORRECT: Installs server dependencies
+RUN npm install --only=production 
 
 # Copy the built React app from the build stage
-COPY --from=build-stage /app/build ./build # CORRECT: Copies static files
+COPY --from=build-stage /app/build ./build 
 
 # Copy the data files needed by json-server
-COPY --from=build-stage /app/data ./data # CORRECT: Copies db.json/routes.json
+COPY --from=build-stage /app/data ./data 
 
 # Expose the port the json-server will run on (Render uses this)
-EXPOSE ${PORT:-10000} # CORRECT: Exposes the port Render expects
+EXPOSE ${PORT:-10000} 
 
 # The command to run json-server serving static files (using the updated npm start script)
-CMD ["npm", "start"] # CORRECT: Runs the script from package.json
+CMD ["npm", "start"] 
