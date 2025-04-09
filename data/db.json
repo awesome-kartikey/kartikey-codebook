@@ -270,8 +270,8 @@
       "amount_paid": 58,
       "quantity": 2,
       "user": {
-        "name": "Shubham Sarda",
-        "email": "shubham@example.com",
+        "name": "Kartikey Kumar",
+        "email": "kartikey@example.com",
         "id": 1
       },
       "id": 1
@@ -279,9 +279,9 @@
   ],
   "users": [
     {
-      "email": "shubham@example.com",
+      "email": "kartikey@example.com",
       "password": "$2a$10$K9aEH3/VDb2QU/EsjrHGJO7X5JxCcg0bMAnBtyT3kBW9FL7FnnygO",
-      "name": "Shubham Sarda",
+      "name": "Kartikey Kumar",
       "id": 1
     }
   ]
