@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Set environment variables for the build process
 ENV NODE_ENV=production
-ENV REACT_APP_HOST="" # CORRECT: Ensures relative paths are used in the build
+ENV REACT_APP_HOST=""
 ENV REACT_APP_GUEST_LOGIN=shubham@example.com
 ENV REACT_APP_GUEST_PASSWORD=learnreact
 # Add any other REACT_APP_ variables needed during build here
