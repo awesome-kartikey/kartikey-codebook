@@ -1,73 +1,105 @@
-npx json-server --watch data/db.json --port 8000
-npx json-server-auth --watch data/db.json --port 8000
+# CodeBook - React eBook Store
 
-# Getting Started with Create React App
+Welcome to CodeBook, a modern front-end e-commerce application built with React, designed for browsing and purchasing computer science eBooks. This project simulates a real-world online store experience, featuring product listings, filtering, sorting, user authentication, shopping cart functionality, mock checkout, and a user dashboard.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ✨ Features
 
-## Available Scripts
+- **Browse eBooks:** View a list of available eBooks with details.
+- **Search:** Find specific eBooks by name.
+- **Filtering:** Filter eBooks based on ratings, stock availability, and best-seller status.
+- **Sorting:** Sort eBooks by price (Low to High, High to Low).
+- **Product Details:** View detailed information about each eBook.
+- **User Authentication:** Secure user registration and login.
+- **Shopping Cart:** Add/remove eBooks from the cart.
+- **Mock Checkout:** Simulate the order placement process.
+- **Order History:** View past orders on the user dashboard.
+- **Dark Mode:** Toggle between light and dark UI themes.
+- **Responsive Design:** Adapts to different screen sizes (desktop, tablet, mobile).
+- **Toast Notifications:** User-friendly feedback for actions.
+- **Protected Routes:** Secure access to user-specific pages (Cart, Dashboard, Order Summary).
 
-In the project directory, you can run:
+## 🚀 Tech Stack
 
-### `npm start`
+- **Frontend:**
+  - [React](https://reactjs.org/) (v18)
+  - [React Router DOM](https://reactrouter.com/) (v6) - For routing
+  - [Tailwind CSS](https://tailwindcss.com/) - For styling
+  - React Context API + `useReducer` - For state management (Cart, Filters)
+  - [Create React App](https://create-react-app.dev/) - Project scaffolding
+  - [react-toastify](https://fkhadra.github.io/react-toastify/introduction/) - For notifications
+- **Mock Backend & Auth:**
+  - [json-server](https://github.com/typicode/json-server) - To simulate a REST API backend
+  - [json-server-auth](https://github.com/jeremyben/json-server-auth) - For user authentication simulation
+- **Development Tools:**
+  - ESLint
+  - Prettier (Implicit via standard CRA setup)
+- **Deployment:**
+  - [Docker](https://www.docker.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ⚙️ Setup Instructions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Prerequisites:**
 
-### `npm test`
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Git](https://git-scm.com/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Local Development:**
 
-### `npm run build`
+1.  **Clone the repository:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```bash
+    git clone https://github.com/awesome-kartikey/kartikey-cinemate.git
+    cd kartikey-codebook
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.  **Install dependencies:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```bash
+    npm install
+    ```
 
-### `npm run eject`
+3.  **Start the Mock API Backend:**
+    Open a terminal and run:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```bash
+    npx json-server-auth --watch data/db.json --routes data/routes.json --port 8000
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    This will start the mock API server on `http://localhost:8000`. Keep this terminal running.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4.  **Start the React Development Server:**
+    Open _another_ terminal in the project directory and run:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    ```bash
+    npm run dev
+    ```
 
-## Learn More
+    This will start the React app in development mode. Open [http://localhost:3000](http://localhost:3000) (or the port specified in the terminal) to view it in your browser.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    _Note: The `REACT_APP_HOST` variable in the `.env` file (you might need to create one based on `.env.example` if provided, or leave it as default) should point to `http://localhost:8000` for development._
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Docker Setup:**
 
-### Code Splitting
+1.  **Build the Docker image:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```bash
+    docker build -t codebook-app .
+    ```
 
-### Analyzing the Bundle Size
+2.  **Run the Docker container:**
+    ```bash
+    docker run -p 3000:10000 -e PORT=10000 codebook-app
+    ```
+    The application (including the `json-server` backend serving the frontend build) will be available at [http://localhost:3000](http://localhost:3000). Note that the Dockerfile is configured for deployment where `json-server` serves the static build and acts as the API simultaneously.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📖 Usage
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1.  **Explore:** Browse the homepage for featured eBooks or navigate to the "Products" page to see all available eBooks.
+2.  **Search/Filter/Sort:** Use the search bar, filter options (click the filter icon on the products page), and sorting controls to find specific eBooks.
+3.  **View Details:** Click on an eBook card to see its detailed description, rating, and other information.
+4.  **Authentication:** Register for a new account or log in using existing credentials. You can also use the Guest Login feature (credentials available on the Login page).
+5.  **Cart:** Add eBooks to your cart. View the cart to proceed to checkout or remove items.
+6.  **Checkout:** Simulate the payment process (uses mock data).
+7.  **Dashboard:** After logging in, access your dashboard to view your order history.
+8.  **Dark Mode:** Toggle the theme using the gear icon in the header.
